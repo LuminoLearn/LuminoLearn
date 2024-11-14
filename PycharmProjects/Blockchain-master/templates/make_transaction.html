@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make Transaction</title>
+    <link rel="stylesheet" href="/static/css/custom.css">
+
+</head>
+<body>
+
+ <nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="navbar-client">Blockchain Client</a>
+        <button class="navbar-toggle" id="navbar-toggle">
+            ☰
+        </button>
+
+        <div class="collapse" id="navbar-collapse">
+            <ul class="nav">
+                <li class="item">
+                    <a href="/" class="nav-link">Wallet Generator</a>
+                </li>
+                <li class="item">
+                    <a href="/make/transaction" class="nav-link">Make Transaction</a>
+                </li>
+                <li class="item">
+                    <a href="/view/transactions" class="nav-link">View Transactions</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="center">
+                <div class="coins">
+                  <p class="text">Enter transaction details and click on "Generate Transaction" button to generate your transaction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sender">
+        <form id="form">
+            <div class="row">
+                <label class="sendpbkey">Sender Public Key:</label>
+                <div>
+                    <input type="text" name="sender_public_key" id="sender_public_key" class="form-control">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <label class="senderprkey">Sender Private Key:</label>
+                <div>
+                    <input type="text" name="sender_private_key" id="sender_private_key" class="form-control">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <label class="recpbkey">Recipient Public Key:</label>
+                <div>
+                    <input type="text" name="recipient_public_key" id="recipient_public_key" class="form-control">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <label class="amount">Amount:</label>
+                <div>
+                    <input type="text" name="amount" id="amount" class="form-control">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div>
+                    <input type="button" name="generate_transaction" id="generate_transaction" class="btn btn-primary btn-lg" value="Generate Transaction">
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+  <div id="basic_modal" class="modal" style="display:none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Confirm transaction details, enter a blockchain node URL and click "Confirm Transaction" to finalize your transaction.</div>
+                <button type="button" class="close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="confirmation_transaction_form">
+                    <div>
+                        <label>Sender Public Key:</label>
+                        <input type="text" name="confirmation_sender_public_key" id="confirmation_sender_public_key" readonly class="form-control">
+                    </div>
+                    <div>
+                        <label>Recipient Public Key:</label>
+                        <input type="text" name="confirmation_recipient_public_key" id="confirmation_recipient_public_key" readonly class="form-control">
+                    </div>
+                    <div>
+                        <label>Amount to Send:</label>
+                        <input type="text" name="confirmation_amount" id="confirmation_amount" readonly class="form-control">
+                    </div>
+                    <div>
+                        <label>Transaction Signature:</label>
+                        <input type="text" name="transaction_signature" id="transaction_signature" readonly class="form-control">
+                    </div>
+                </form>
+                <button type="button" id="transaction">Confirm Transaction</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <div class="row">
+    <label class="col-sm-12">Blockchain Node URL:</label>
+    <div class="col-sm-12">
+        <input type="text" name="node_url" id="node_url" class="form-control" placeholder="Enter Node URL" value="http://127.0.0.1:5001">
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" onclick="closeModal()">Cancel</button>
+    <button type="button" id="button_confirm_transaction" class="btn btn-success">Confirm Transaction</button>
+</div>
+
+ </div>
+ </div>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
